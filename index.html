@@ -11,7 +11,6 @@
             --text-primary: #1d1d1f;
             --text-secondary: #86868b;
             --glass-bg: rgba(255, 255, 255, 0.8);
-            --glass-border: rgba(255, 255, 255, 0.4);
         }
 
         /* Apple System Fonts */
@@ -25,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* Navigation - Glassmorphism */
+        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -55,22 +54,14 @@
             color: var(--text-primary);
             font-size: 12px;
             font-weight: 500;
-            transition: color 0.3s ease;
         }
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        nav .logo {
-            font-weight: 600;
-            font-size: 14px;
-        }
+        nav .logo { font-weight: 600; font-size: 14px; }
 
         /* Hero Section */
         .hero {
             text-align: center;
-            padding: 120px 20px 60px;
+            padding: 120px 20px 40px;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -88,7 +79,6 @@
 
         .hero h2 {
             font-size: 24px;
-            line-height: 1.16;
             font-weight: 400;
             color: var(--text-primary);
             margin-bottom: 24px;
@@ -101,7 +91,6 @@
             margin: 0 auto 40px;
         }
 
-        /* Buttons */
         .btn {
             display: inline-block;
             background-color: var(--accent-color);
@@ -114,42 +103,42 @@
             transition: transform 0.2s, background-color 0.2s;
         }
 
-        .btn:hover {
-            background-color: #0077ed;
-            transform: scale(1.02);
-        }
+        .btn:hover { background-color: #0077ed; transform: scale(1.02); }
 
-        /* Mockup Representation */
-        .mockup-container {
-            margin: 60px auto;
-            max-width: 900px;
-            position: relative;
-        }
-
-        .mockup {
-            width: 100%;
-            height: auto;
-            border-radius: 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background: white;
-            padding: 10px;
-            /* Placeholder for screenshot */
-            aspect-ratio: 16/10; 
+        /* Gallery Section (5 Images Stacked) */
+        .gallery-container {
             display: flex;
+            flex-direction: column; /* Alt alta dizilim */
             align-items: center;
-            justify-content: center;
-            color: #ccc;
-            border: 1px solid rgba(0,0,0,0.1);
+            gap: 40px; /* Görseller arası boşluk */
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
         }
 
-        /* Grid Features */
+        .app-screenshot {
+            width: 100%;
+            max-width: 900px; /* Geniş (Yatay) görünüm */
+            height: auto;
+            border-radius: 16px; /* Apple tarzı yumuşak köşe */
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12); /* Derinlik gölgesi */
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            background-color: #fff; /* Resim yüklenmezse beyaz fon */
+        }
+
+        .app-screenshot:hover {
+            transform: scale(1.01); /* Üzerine gelince hafif büyüme efekti */
+        }
+
+        /* Features Grid */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             max-width: 980px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 40px auto;
+            padding: 0 20px;
         }
 
         .card {
@@ -157,24 +146,12 @@
             padding: 30px;
             border-radius: 18px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+        .card h3 { font-size: 20px; margin-bottom: 10px; }
+        .card p { font-size: 16px; color: var(--text-secondary); }
 
-        .card h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            font-size: 16px;
-            color: var(--text-secondary);
-        }
-
-        /* Support & Footer */
+        /* Footer */
         .footer-section {
             background-color: #fff;
             padding: 60px 20px;
@@ -190,34 +167,30 @@
             font-weight: 600;
         }
 
-        footer {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 20px;
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-align: center;
-            border-top: 1px solid #e5e5e5;
-        }
-
-        /* Privacy Policy Box */
         .privacy-box {
             background: #f5f5f7;
             padding: 20px;
             border-radius: 12px;
-            margin-top: 20px;
-            font-size: 14px;
+            margin-top: 30px;
+            font-size: 13px;
             color: var(--text-secondary);
             text-align: left;
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.6;
         }
 
-        /* Mobile Adjustments */
+        footer {
+            padding: 30px;
+            font-size: 11px;
+            color: #999;
+            text-align: center;
+        }
+
         @media (max-width: 768px) {
             .hero h1 { font-size: 40px; }
-            .hero h2 { font-size: 20px; }
+            .gallery-container { gap: 20px; }
         }
     </style>
 </head>
@@ -227,7 +200,7 @@
         <div class="nav-container">
             <div class="logo">Gaze Guard</div>
             <div>
-                <a href="#features">Features</a>
+                <a href="#gallery">Gallery</a>
                 <span style="margin: 0 10px; color: #ccc;">|</span>
                 <a href="#support">Support</a>
             </div>
@@ -237,49 +210,51 @@
     <section class="hero">
         <h1>Privacy, Reinvented.</h1>
         <h2>Protect your screen from prying eyes instantly.</h2>
-        <p>Gaze Guard automatically blurs your sensitive apps when you look away or when someone else is detected behind you. Native to macOS.</p>
-        
+        <p>Gaze Guard automatically blurs your sensitive apps when you look away or when someone else is detected behind you.</p>
         <a href="#" class="btn">View on Mac App Store</a>
-
-        <div class="mockup-container">
-            <div class="mockup" style="background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f7 100%);">
-                <div style="text-align: center;">
-                    <h3 style="color:#999; margin:0;">Gaze Guard Interface</h3>
-                    <p style="color:#bbb; font-size: 14px;">Running on macOS Sequoia</p>
-                </div>
-            </div>
-        </div>
     </section>
 
-    <section id="features" class="features">
+    <section id="gallery" class="gallery-container">
+        <img src="gazeGuard-1.jpg" alt="Gaze Guard Screenshot 1" class="app-screenshot">
+        
+        <img src="gazeGuard-2.jpg" alt="Gaze Guard Screenshot 2" class="app-screenshot">
+        
+        <img src="gazeGuard-3.jpg" alt="Gaze Guard Screenshot 3" class="app-screenshot">
+        
+        <img src="gazeGuard-4-2.jpeg" alt="Gaze Guard Screenshot 4" class="app-screenshot">
+        
+        <img src="app-guar-main.png" alt="Gaze Guard Screenshot 5" class="app-screenshot">
+    </section>
+
+    <section class="features">
         <div class="card">
             <h3>👁️ Smart Gaze Detection</h3>
-            <p>Uses Apple's Vision framework to detect when you look away, blurring your screen instantly to protect your data.</p>
+            <p>Uses Apple's Vision framework to detect when you look away, blurring your screen instantly.</p>
         </div>
         <div class="card">
             <h3>🛡️ Shoulder Surfing Shield</h3>
-            <p>Detects unauthorized faces behind you. If someone tries to peek at your screen, privacy mode activates immediately.</p>
+            <p>Detects unauthorized faces behind you. Privacy mode activates immediately if someone peeks.</p>
         </div>
         <div class="card">
             <h3>⚡ Apple Silicon Ready</h3>
-            <p>Optimized for M1, M2, and M3 chips. Runs efficiently in the background with minimal battery impact (Eco Mode included).</p>
+            <p>Optimized for M1, M2, and M3 chips. Runs efficiently with minimal battery impact.</p>
         </div>
     </section>
 
     <section id="support" class="footer-section">
-        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 10px;">Support & Privacy</h2>
-        <p style="margin-bottom: 20px; color: var(--text-secondary);">Need help? Have feedback? We are here for you.</p>
+        <h2>Support & Privacy</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 20px;">Need help? Contact us directly.</p>
         
         <a href="mailto:support@kurnazstudio.com" class="contact-link">Contact Support</a>
 
         <div class="privacy-box">
-            <strong>Privacy Policy Summary:</strong><br>
-            Gaze Guard works entirely on-device using Apple's Vision framework. No camera data, images, or face data is ever stored, saved, or transmitted to any server. Your privacy is our priority.
+            <strong>Privacy Policy:</strong><br>
+            Gaze Guard works entirely on-device using Apple's Vision framework. No camera data, images, or face data is ever stored, saved, or transmitted to any server. All processing happens locally in your Mac's RAM.
         </div>
     </section>
 
     <footer>
-        <p>Copyright © 2026 Kurnaz Studio. All rights reserved. <br>Mac and macOS are trademarks of Apple Inc.</p>
+        <p>Copyright © 2026 Kurnaz Studio. All rights reserved.</p>
     </footer>
 
 </body>
