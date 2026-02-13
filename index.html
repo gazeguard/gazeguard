@@ -1,31 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17899341686">
-</script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'AW-17899341686');
-</script>
-<!-- End Google Tag Manager -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17899341686"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-17899341686');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaze Guard - Privacy for macOS</title>
+    <title data-i18n="page_title">Gaze Guard - Privacy for macOS</title>
     <style>
         :root {
-            --accent-color: #0071e3; /* Apple Blue */
-            --bg-color: #f5f5f7; /* Apple Light Grey */
+            --accent-color: #0071e3;
+            --bg-color: #f5f5f7;
             --text-primary: #1d1d1f;
             --text-secondary: #86868b;
-            --glass-bg: rgba(255, 255, 255, 0.9); /* Biraz daha opak yapıldı */
+            --glass-bg: rgba(255, 255, 255, 0.9);
         }
 
-        /* Apple System Fonts */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             background-color: var(--bg-color);
@@ -34,14 +28,14 @@
             padding: 0;
             line-height: 1.5;
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
             width: 100%;
-            height: 64px; /* Yükseklik arttırıldı */
+            height: 64px;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -61,11 +55,10 @@
             padding: 0 24px;
         }
 
-        /* LOGO ALANI DÜZENLEMESİ */
         nav .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 12px; /* Logo ve yazı arası boşluk */
+            gap: 12px;
             text-decoration: none;
             color: var(--text-primary);
             transition: opacity 0.2s;
@@ -74,17 +67,22 @@
         nav .logo-wrapper:hover { opacity: 0.8; }
 
         nav .logo-img {
-            width: 42px; /* Logo büyütüldü */
+            width: 42px;
             height: 42px;
-            border-radius: 9px; /* Apple ikon standardı */
+            border-radius: 9px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         nav .logo-text {
-            font-weight: 700; /* Daha kalın */
-            font-size: 21px; /* Daha büyük */
+            font-weight: 700;
+            font-size: 21px;
             letter-spacing: -0.02em;
             color: #1d1d1f;
+        }
+
+        nav .links {
+            display: flex;
+            align-items: center;
         }
 
         nav .links a {
@@ -97,16 +95,15 @@
         
         nav .links a:hover { color: var(--accent-color); }
 
-        /* Hero Section */
         .hero {
             text-align: center;
-            padding: 160px 20px 60px; /* Üst boşluk arttırıldı */
+            padding: 160px 20px 60px;
             max-width: 800px;
             margin: 0 auto;
         }
 
         .hero h1 {
-            font-size: 64px; /* Başlık büyütüldü */
+            font-size: 64px;
             line-height: 1.05;
             font-weight: 700;
             letter-spacing: -0.01em;
@@ -129,7 +126,6 @@
             line-height: 1.4;
         }
 
-        /* DEVASA BUTON AYARI */
         .app-store-btn {
             display: inline-block;
             transition: transform 0.2s ease, filter 0.2s;
@@ -137,9 +133,9 @@
         }
         
         .app-store-btn img {
-            height: 160px; /* Buton Yüksekliği Arttırıldı */
-            width: auto;  /* Orantılı genişlik */
-            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1)); /* Hafif gölge */
+            height: 160px;
+            width: auto;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
         }
 
         .app-store-btn:hover {
@@ -147,7 +143,6 @@
             filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
         }
 
-        /* Gallery Section */
         .gallery-container {
             display: flex;
             flex-direction: column;
@@ -160,10 +155,10 @@
 
         .app-screenshot {
             width: 100%;
-            max-width: 960px; /* Görseller biraz daha genişledi */
+            max-width: 960px;
             height: auto;
             border-radius: 18px;
-            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15); /* Daha yumuşak gölge */
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
             border: 1px solid rgba(0,0,0,0.05);
             background-color: #fff;
             transition: transform 0.3s ease;
@@ -171,7 +166,6 @@
         
         .app-screenshot:hover { transform: scale(1.01); }
 
-        /* Features Grid */
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -194,13 +188,70 @@
         .card h3 { font-size: 22px; margin-bottom: 12px; font-weight: 600; }
         .card p { font-size: 17px; color: var(--text-secondary); line-height: 1.5; }
 
-        /* Footer */
+        .faq-section {
+            max-width: 800px;
+            margin: 100px auto 60px;
+            padding: 0 24px;
+        }
+
+        .faq-section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .faq-item {
+            background: #fff;
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+            overflow: hidden;
+        }
+
+        .faq-item details {
+            padding: 24px;
+        }
+
+        .faq-item summary {
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+        }
+
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .faq-item summary::after {
+            content: '+';
+            font-size: 24px;
+            color: var(--accent-color);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item details[open] summary::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-item p {
+            margin-top: 16px;
+            margin-bottom: 0;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
         .footer-section {
             background-color: #fff;
             padding: 100px 20px;
             text-align: center;
             border-top: 1px solid #e5e5e5;
-            margin-top: 80px;
         }
 
         .contact-link {
@@ -238,15 +289,13 @@
             .hero h1 { font-size: 42px; }
             .hero p { font-size: 18px; }
             nav .logo-text { font-size: 18px; }
-            .app-store-btn img { height: 60px; } /* Mobilde biraz küçültelim taşmasın */
+            .app-store-btn img { height: 60px; }
+            .faq-section h2 { font-size: 28px; }
         }
     </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC9FW6N6"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MC9FW6N6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <nav>
         <div class="nav-container">
@@ -256,20 +305,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </a>
             
             <div class="links">
-                <a href="#gallery">Gallery</a>
+                <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
                 <span style="margin: 0 12px; color: #d2d2d7;">|</span>
-                <a href="#support">Support</a>
+                <a href="#faq" data-i18n="nav_faq">FAQ</a>
+                <span style="margin: 0 12px; color: #d2d2d7;">|</span>
+                <a href="#support" data-i18n="nav_support">Support</a>
+                <span style="margin: 0 12px; color: #d2d2d7;">|</span>
+                
+                <select id="languageSwitcher" style="background: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 4px 8px; font-size: 14px; color: var(--text-primary); cursor: pointer; outline: none;">
+                    <option value="en">English</option>
+                    <option value="tr">Türkçe</option>
+                    <option value="de">Deutsch</option>
+                    <option value="fr">Français</option>
+                    <option value="es">Español</option>
+                </select>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <h1>Privacy, Reinvented.</h1>
-        <h2>Protect your screen from prying eyes instantly. %100 Offline.</h2>
-        <p>Gaze Guard automatically blurs your sensitive apps when you look away or when someone else is detected behind you.</p>
+        <h1 data-i18n="hero_title">Privacy, Reinvented.</h1>
+        <h2 data-i18n="hero_subtitle">Protect your screen from prying eyes instantly. 100% Offline.</h2>
+        <p data-i18n="hero_desc">Gaze Guard automatically blurs your sensitive apps when you look away or when someone else is detected behind you.</p>
         
         <a href="https://apps.apple.com/us/app/gaze-guard/id6758575687?mt=12" class="app-store-btn" target="_blank">
-            <img src="MacAppStore.png" alt="Download on the Mac App Store">
+            <img src="MacAppStore.png" alt="Download on the Mac App Store" data-i18n-alt="alt_appstore">
         </a>
     </section>
 
@@ -283,34 +343,121 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <section class="features">
         <div class="card">
-            <h3>👁️ Smart Gaze Detection</h3>
-            <p>Uses Apple's Vision framework to detect when you look away, blurring your screen instantly to protect your data.</p>
+            <h3 data-i18n="feature_1_title">👁️ Smart Gaze Detection</h3>
+            <p data-i18n="feature_1_desc">Uses Apple's Vision framework to detect when you look away, blurring your screen instantly to protect your data.</p>
         </div>
         <div class="card">
-            <h3>🛡️ Shoulder Surfing Shield</h3>
-            <p>Detects unauthorized faces behind you using advanced analysis. Privacy mode activates immediately if someone peeks.</p>
+            <h3 data-i18n="feature_2_title">🛡️ Shoulder Surfing Shield</h3>
+            <p data-i18n="feature_2_desc">Detects unauthorized faces behind you using advanced analysis. Privacy mode activates immediately if someone peeks.</p>
         </div>
         <div class="card">
-            <h3>⚡ Apple Silicon Ready</h3>
-            <p>Optimized for Apple Silicon chips. Runs efficiently in the background with minimal battery impact.</p>
+            <h3 data-i18n="feature_3_title">⚡ Apple Silicon Ready</h3>
+            <p data-i18n="feature_3_desc">Optimized for Apple Silicon chips. Runs efficiently in the background with minimal battery impact.</p>
+        </div>
+    </section>
+
+    <section id="faq" class="faq-section">
+        <h2 data-i18n="faq_title">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <details>
+                <summary data-i18n="faq_q1">Does Gaze Guard connect to the internet?</summary>
+                <p data-i18n="faq_a1"><strong>Absolutely not.</strong> Gaze Guard is 100% offline. All processing happens locally on your Mac using Apple's Vision framework. We do not collect, store, or transmit any data whatsoever.</p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary data-i18n="faq_q2">Is my camera feed safe? Has Apple reviewed this?</summary>
+                <p data-i18n="faq_a2">Yes. Gaze Guard has passed Apple's strict App Store review guidelines regarding privacy and security. Your camera feed is analyzed in real-time inside your Mac's RAM and is <strong>never</strong> recorded or saved to your disk.</p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary data-i18n="faq_q3">I opened the app but can't see the icon in the Menu Bar. Where is it?</summary>
+                <p data-i18n="faq_a3">If you are using a MacBook with a camera "notch" at the top of the screen, the Gaze Guard icon might be hidden behind it due to macOS automatically hiding overflow icons. To fix this, simply close some other menu bar apps, or hold down the <strong>Command (⌘)</strong> key and drag the Gaze Guard icon to the right side of the notch so it stays visible.</p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary data-i18n="faq_q4">Is this a subscription or a one-time purchase?</summary>
+                <p data-i18n="faq_a4">Gaze Guard is a <strong>lifetime, one-time purchase</strong>. You pay once and get lifetime access to all current features with zero recurring subscription fees.</p>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary data-i18n="faq_q5">Will it drain my Mac's battery?</summary>
+                <p data-i18n="faq_a5">No. Gaze Guard is heavily optimized to run on Apple Silicon's Neural Engine. It is designed to be highly energy-efficient and work seamlessly in the background without causing noticeable battery drain.</p>
+            </details>
         </div>
     </section>
 
     <section id="support" class="footer-section">
-        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;">Support & Privacy</h2>
-        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 18px;">Need help? Have feedback? Contact us directly.</p>
+        <h2 style="font-size: 32px; font-weight: 700; margin-bottom: 16px;" data-i18n="support_title">Support & Privacy</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 24px; font-size: 18px;" data-i18n="support_subtitle">Need help? Have feedback? Contact us directly.</p>
         
-        <a href="mailto:veyselkurnaz@icloud.com" class="contact-link">Contact Support</a>
+        <a href="mailto:veyselkurnaz@icloud.com" class="contact-link" data-i18n="contact_link">Contact Support</a>
 
         <div class="privacy-box">
-            <strong style="display:block; margin-bottom:10px; color:#1d1d1f; font-size:16px;">Privacy Policy Summary</strong>
-            Gaze Guard works entirely on-device using Apple's Vision framework. No camera data, images, or face data is ever stored, saved, or transmitted to any server. All processing happens locally in your Mac's RAM for maximum privacy.
+            <strong style="display:block; margin-bottom:10px; color:#1d1d1f; font-size:16px;" data-i18n="privacy_title">Privacy Policy Summary</strong>
+            <span data-i18n="privacy_text">Gaze Guard works entirely on-device using Apple's Vision framework. No camera data, images, or face data is ever stored, saved, or transmitted to any server. All processing happens locally in your Mac's RAM for maximum privacy.</span>
         </div>
     </section>
 
     <footer>
-        <p>Copyright © 2026 Kurnaz Studio. All rights reserved.<br>Mac and the Mac logo are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
+        <p data-i18n="footer_text">Copyright © 2026 Kurnaz Studio. All rights reserved.<br>Mac and the Mac logo are trademarks of Apple Inc., registered in the U.S. and other countries.</p>
     </footer>
 
+    <script>
+        const supportedLangs = ['en', 'tr', 'de', 'fr', 'es'];
+        const defaultLang = 'en';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            let userLang = localStorage.getItem('appLang');
+            if (!userLang) {
+                const browserLang = navigator.language.slice(0, 2);
+                userLang = supportedLangs.includes(browserLang) ? browserLang : defaultLang;
+            }
+
+            const switcher = document.getElementById('languageSwitcher');
+            if (switcher) {
+                switcher.value = userLang;
+                switcher.addEventListener('change', (e) => {
+                    const newLang = e.target.value;
+                    setLanguage(newLang);
+                });
+            }
+
+            setLanguage(userLang);
+        });
+
+        async function setLanguage(lang) {
+            try {
+                const response = await fetch(`locales/${lang}.json`);
+                if (!response.ok) throw new Error(`Dil dosyası bulunamadı: ${lang}`);
+                
+                const translations = await response.json();
+
+                document.querySelectorAll('[data-i18n]').forEach(element => {
+                    const key = element.getAttribute('data-i18n');
+                    if (translations[key]) {
+                        element.innerHTML = translations[key]; 
+                    }
+                });
+
+                document.documentElement.lang = lang;
+                localStorage.setItem('appLang', lang);
+
+            } catch (error) {
+                console.error("Dil yüklenirken hata oluştu:", error);
+                if (lang !== defaultLang) {
+                    setLanguage(defaultLang);
+                }
+            }
+        }
+    </script>
 </body>
 </html>
