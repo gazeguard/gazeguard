@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17899341686"></script>
     <script>
@@ -83,6 +83,7 @@
         nav .links {
             display: flex;
             align-items: center;
+            gap: 12px;
         }
 
         nav .links a {
@@ -94,6 +95,9 @@
         }
         
         nav .links a:hover { color: var(--accent-color); }
+        
+        /* Sağdan sola yazılan dillerde (Arapça) çizgileri daha düzgün hizalamak için */
+        .separator { color: #d2d2d7; }
 
         .hero {
             text-align: center;
@@ -270,7 +274,7 @@
             margin-top: 50px;
             font-size: 14px;
             color: var(--text-secondary);
-            text-align: left;
+            text-align: start; /* Arapça için otomatik hizalama */
             max-width: 640px;
             margin-left: auto;
             margin-right: auto;
@@ -306,11 +310,11 @@
             
             <div class="links">
                 <a href="#gallery" data-i18n="nav_gallery">Gallery</a>
-                <span style="margin: 0 12px; color: #d2d2d7;">|</span>
+                <span class="separator">|</span>
                 <a href="#faq" data-i18n="nav_faq">FAQ</a>
-                <span style="margin: 0 12px; color: #d2d2d7;">|</span>
+                <span class="separator">|</span>
                 <a href="#support" data-i18n="nav_support">Support</a>
-                <span style="margin: 0 12px; color: #d2d2d7;">|</span>
+                <span class="separator">|</span>
                 
                 <select id="languageSwitcher" style="background: transparent; border: 1px solid rgba(0,0,0,0.1); border-radius: 6px; padding: 4px 8px; font-size: 14px; color: var(--text-primary); cursor: pointer; outline: none;">
                     <option value="en">English</option>
@@ -318,6 +322,14 @@
                     <option value="de">Deutsch</option>
                     <option value="fr">Français</option>
                     <option value="es">Español</option>
+                    <option value="it">Italiano</option>
+                    <option value="pt-BR">Português (BR)</option>
+                    <option value="ja">日本語</option>
+                    <option value="zh-CN">简体中文</option>
+                    <option value="ru">Русский</option>
+                    <option value="ko">한국어</option>
+                    <option value="nl">Nederlands</option>
+                    <option value="ar">العربية</option>
                 </select>
             </div>
         </div>
@@ -412,7 +424,8 @@
     </footer>
 
     <script>
-        const supportedLangs = ['en', 'tr', 'de', 'fr', 'es'];
+        // Tüm 13 dili içeren liste
+        const supportedLangs = ['en', 'tr', 'de', 'fr', 'es', 'it', 'pt-BR', 'ja', 'zh-CN', 'ru', 'ko', 'nl', 'ar'];
         const defaultLang = 'en';
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -448,7 +461,10 @@
                     }
                 });
 
+                // HTML'in dilini ve yönünü (Arapça için sağdan sola) güncelle
                 document.documentElement.lang = lang;
+                document.documentElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+                
                 localStorage.setItem('appLang', lang);
 
             } catch (error) {
